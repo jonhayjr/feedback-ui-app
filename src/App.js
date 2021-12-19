@@ -4,6 +4,7 @@ import {useState} from 'react';
 import Header from './components/Header';
 import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
+import FeedbackForm from './components/FeedbackForm';
 
 /* Import data */
 import FeedbackData from './data/FeedbackData';
@@ -20,12 +21,18 @@ const App = () => {
             setFeedback(newFeedback);
         }
     }
+
+    const addFeedback = (newFeedback) => {
+        setFeedback([...feedback, newFeedback]);
+    }
+
    
 
     return (
         <>
             <Header />
             <div className='container'>
+                <FeedbackForm handleAdd={addFeedback}/>
                 <FeedbackStats feedback={feedback}/>
                 <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
             </div>
